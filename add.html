@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  .btn{
+    border: none;
+    background-color: inherit;
+    font-size: 16px;
+    float:right;
+    margin-left:1%
+  }
+
+  .btn:hover{background: #eee;}
+  
+  .txt{
+    width: 50%;
+    padding: 80px 20px;
+    margin: 8px 0px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFEEAE;
+  }
+  .txtbtn{
+        text-align: center;
+  }
+  
+</style>
+<body>
+  
+
+    <style>h1{float:left; margin: 0;}</style>
+    <h1><FONT COLOR = "#FFA500">Guitar Inventory Management</FONT></h1>
+    <button class = "btn" onclick="window.location.href = 'search.html'">Search</button>
+    <button class = "btn" onclick="window.location.href = 'add.html'">Add</button>
+    <button class = "btn">About</button>
+    
+  
+    <body style ="background-color: #FFEEAE;"></body>
+    <div class = "txt">
+        <label>Serial Number:</label>
+        <input id="guitarSerialNumber"/>
+        <label>Price:</label>
+        <input id="guitarPrice"/>
+        <label>Builder:</label>
+        <input id="guitarBuilder"/>
+        <label>Model:</label>
+        <input id="guitarModel"/>
+        <label>Type:</label>
+        <input id="guitarType"/>
+        <label>Backwood:</label>
+        <input id="guitarBackwood"/>
+        <label>Topwood</label>
+        <input id="guitarTopwood"/>
+        
+    </div>
+    <div class = "txtbtn">
+        <button onclick="addTheGuitar()">Add the guitar</button>
+    </div>
+
+    <script>
+        function addTheGuitar(){
+            let guitarSNNode = document.getElementById("guitarSerialNumber");
+            let guitarSN = guitarSNNode.value;
+
+            
+            let guitarBuilderNode = document.getElementById("guitarBuilder");
+            let guitarBuilder = guitarBuilderNode.value;
+            
+            let guitarModelNode = document.getElementById("guitarModel");
+            let guitarModel= guitarModelNode.value;
+            
+            let guitarTypeNode = document.getElementById("guitarType");
+            let guitarType = guitarTypeNode.value;
+            
+            let guitarBWNode = document.getElementById("guitarBackwood");
+            let guitarBW = guitarBWNode.value;
+            
+            let guitarTWNode = document.getElementById("guitarTopwood");
+            let guitarTW = guitarTWNode.value;
+
+            let guitarPriceNode = document.getElementById("guitarPrice");
+            let guitarPrice = guitarPriceNode.value;
+            
+            
+            let guitar = {SerialNumber: guitarSN, Builder: guitarBuilder, Model: guitarModel, Type: guitarType, BackWood: guitarBW, TopWood: guitarTW, Price: guitarPrice}
+            alert("You entered: " + JSON.stringify(guitar));
+            
+        }
+
+
+    </script>
+    
+
+</body>
+</html>

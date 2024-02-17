@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport"
+    content = "width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<style>
+    .btn{
+      border: none;
+      background-color: inherit;
+      font-size: 16px;
+      float:right;
+      margin-left:1%
+    }
+  
+    .btn:hover{background: #eee;}
+    
+    .txt{
+      width: 50%;
+      padding: 80px 20px;
+      margin: 8px 0px;
+      display: flex;
+      flex-direction: column;
+      background-color: #FFEEAE;
+    }
+    .txtbtn{
+          text-align: center;
+    }
+    
+    table.center{
+        margin-left:auto;
+        margin-right:auto;
+    }
+  </style>
+  <body>
+
+    <style>h1{float:left; margin: 0;}</style>
+    <h1><FONT COLOR = "#FFA500">Guitar Inventory Management</FONT></h1>
+    <button class = "btn" onclick="window.location.href = 'search.html'">Search</button>
+    <button class = "btn" onclick="window.location.href = 'add.html'">Add</button>
+    <button class = "btn">About</button>
+    
+  
+    <body style ="background-color: #FFEEAE;"></body>
+    <div class = "txt">
+        <label>Builder:</label>
+        <input id="guitarBuilder"/>
+        <label>Model:</label>
+        <input id="guitarModel"/>
+        <label>Type:</label>
+        <input id="guitarType"/>
+        <label>Backwood:</label>
+        <input id="guitarBackwood"/>
+        <label>Topwood</label>
+        <input id="guitarTopwood"/>
+        
+    </div>
+    <div class = "txtbtn">
+        <button onclick="search()">Search</button>
+    </div>
+    <br/>
+    <table class = "center">
+        <thead>
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Builder</th>
+                    <th>Model</th>
+                    <th>Type</th>
+                    <th>Backwood</th>
+                    <th>Topwood</th>
+                    <th>Price</th>
+                </tr>
+        </thead>
+        <tbody id = "searchResult">
+            
+        </tbody>
+    </table>
+    
+    <script>
+        let guitars = [
+            {guitarSerialNumber: "12345", guitarBuilder: "fender", guitarModel: "strat", guitarType: "Electric", guitarTopwood: "Oak", guitarBackwood: "Mahogany", guitarPrice: "1000" },
+            {guitarSerialNumber: "12346", guitarBuilder: "gibson", guitarModel: "Les Paul", guitarType: "Electric", guitarTopwood: "Mahogany", guitarBackwood: "Oak", guitarPrice: "900" },
+            {guitarSerialNumber: "12347", guitarBuilder: "epiphone", guitarModel: "ES", guitarType: "Electric", guitarTopwood: "Cedar", guitarBackwood: "Mahogany", guitarPrice: "1000" },
+            {guitarSerialNumber: "12348", guitarBuilder: "fender", guitarModel: "Squier", guitarType: "Acoustic", guitarTopwood: "Oak", guitarBackwood: "Mahogany", guitarPrice: "1000" },
+            {guitarSerialNumber: "12349", guitarBuilder: "Gibson", guitarModel: "Hummingbird", guitarType: "Acoustic", guitarTopwood: "Oak", guitarBackwood: "Cedar", guitarPrice: "995" },
+
+        ];
+
+        function search(){
+            let guitarBuilder = document.getElementById("guitarBuilder").value.toLowerCase();
+            let guitarModel = document.getElementById("guitarModel").value.toLowerCase();
+            let guitarType = document.getElementById("guitarType").value.toLowerCase();
+            let guitarBW = document.getElementById("guitarBackwood").value.toLowerCase();
+            let guitarTW = document.getElementById("guitarTopwood").value.toLowerCase();
+
+
+            let table = document.getElementById("searchResult");
+            table.innerHTML = "";
+
+            for (let guitar of guitars){
+                if ((!guitarBuilder || guitar.guitarBuilder.toLowerCase() == guitarBuilder) && (!guitarModel || guitar.guitarModel.toLowerCase() == guitarModel) && (!guitarType || guitar.guitarType.toLowerCase() == guitarType)&& (!guitarBW || guitar.guitarBW.toLowerCase() == guitarBW) && (!guitarTW || guitar.guitarTW.toLowerCase() == guitarTW)){
+                    let row = document.createElement("tr");
+                    let cell1 = document.createElement("td");
+                    let cell2 = document.createElement("td");
+                    let cell3 = document.createElement("td");
+                    let cell4 = document.createElement("td");
+                    let cell5 = document.createElement("td");
+                    let cell6 = document.createElement("td");
+                    let cell7 = document.createElement("td");
+
+                    let serialNum = document.createTextNode(guitar.guitarSerialNumber);
+                    let build = document.createTextNode(" " + guitar.guitarBuilder);
+                    let mod = document.createTextNode(" " + guitar.guitarModel);
+                    let type = document.createTextNode(" " + guitar.guitarType);
+                    let TW = document.createTextNode(" " + guitar.guitarTopwood);
+                    let BW = document.createTextNode(" " + guitar.guitarBackwood);
+                    let price = document.createTextNode(" " + guitar.guitarPrice);
+
+                    cell1.appendChild(serialNum);
+                    cell2.appendChild(build);
+                    cell3.appendChild(mod);
+                    cell4.appendChild(type);
+                    cell5.appendChild(TW);
+                    cell6.appendChild(BW);
+                    cell7.appendChild(price);
+
+                    row.appendChild(cell1);
+                    row.appendChild(cell2);
+                    row.appendChild(cell3);
+                    row.appendChild(cell4);
+                    row.appendChild(cell5);
+                    row.appendChild(cell6);
+                    row.appendChild(cell7);
+
+                    table.appendChild(row);
+                    
+                }
+
+
+            }
+        }
+
+
+
+
+
+
+
+    </script>
+
+
+
+  </body>
+
+</html>
